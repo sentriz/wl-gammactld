@@ -12,6 +12,7 @@ fi
 
 path_lock='/tmp/wl-gammactld-lock'
 path_msg='/tmp/wl-gammactld'
+path_notify="$(mktemp)"
 
 exec 9>"$path_lock"
 flock -n 9 || exit 1
@@ -37,5 +38,8 @@ while IFS=' ' read command value <$path_msg; do
         *)            echo "unknown command $command" >&2 
                       continue ;;
     esac
+    notify-send.sh \
+        --replace-file "$path_notify" \
+        "contrast $v_cont\nbrightness $v_brig\ngamma $v_gamm"
     wl-gamma
 done
