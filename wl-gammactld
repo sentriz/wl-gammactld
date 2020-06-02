@@ -17,9 +17,9 @@ path_notify="$(mktemp)"
 exec 9>"$path_lock"
 flock -n 9 || exit 1
 
-v_cont=1
-v_brig=1
-v_gamm=1
+v_cont='1.00'
+v_brig='1.00'
+v_gamm='1.00'
 
 wl-gamma-kill() { kill "$wl_gamma_pid" >/dev/null 2>&1; }
 wl-gamma() {
