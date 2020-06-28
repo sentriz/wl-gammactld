@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-if ! command -v "wl-gammactl" >/dev/null 2>&1; then
+if ! type -p wl-gammactld >/dev/null; then
     echo "please install wl-gammactl" >&2
     echo "https://github.com/mischw/wl-gammactl" >&2
     exit 1
 fi
 
-if ! command -v "flock" >/dev/null 2>&1; then
+if ! type -p flock >/dev/null; then
     echo "please install flock" >&2
     exit 1
 fi
